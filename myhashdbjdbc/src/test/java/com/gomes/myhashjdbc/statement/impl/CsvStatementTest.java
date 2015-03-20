@@ -1,15 +1,14 @@
-package com.googlecode.dummyjdbc.statement.impl;
+package com.gomes.myhashjdbc.statement.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.gomes.myhashjdbc.Driver;
 import junit.framework.Assert;
 
 import org.junit.Test;
-
-import com.googlecode.dummyjdbc.DummyJdbcDriver;
 
 public final class CsvStatementTest {
 
@@ -18,9 +17,9 @@ public final class CsvStatementTest {
 	 */
 	@Test
 	public void notAvailableCsvFileTest() throws Exception {
-		Class.forName(DummyJdbcDriver.class.getCanonicalName());
+		Class.forName(Driver.class.getCanonicalName());
 
-		Connection connection = DriverManager.getConnection("any");
+		Connection connection = DriverManager.getConnection("jdbc:myhashdb");
 		Statement statement = connection.createStatement();
 
 		Assert.assertTrue(statement instanceof CsvStatement);

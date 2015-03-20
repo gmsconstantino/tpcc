@@ -1,4 +1,4 @@
-package com.googlecode.dummyjdbc.statement.impl;
+package com.gomes.myhashjdbc.statement.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,14 +19,13 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.gomes.myhashjdbc.resultset.DummyResultSet;
+import com.gomes.myhashjdbc.resultset.impl.CSVResultSet;
+import com.gomes.myhashjdbc.statement.StatementAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import au.com.bytecode.opencsv.CSVReader;
-
-import com.googlecode.dummyjdbc.resultset.DummyResultSet;
-import com.googlecode.dummyjdbc.resultset.impl.CSVResultSet;
-import com.googlecode.dummyjdbc.statement.StatementAdapter;
 
 /**
  * This class does the actual work of the Generic... classes. It tries to open a CSV file for the table name in the
@@ -169,4 +168,15 @@ public final class CsvStatement extends StatementAdapter {
 
 		return new DummyResultSet();
 	}
+
+
+
+    // Esta a chamar isto para fazer os insert
+    @Override
+    public boolean execute(String sql) throws SQLException {
+        return false;
+    }
+
+
+
 }

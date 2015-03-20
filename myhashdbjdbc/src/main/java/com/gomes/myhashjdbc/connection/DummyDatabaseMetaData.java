@@ -1,4 +1,4 @@
-package com.googlecode.dummyjdbc.connection;
+package com.gomes.myhashjdbc.connection;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;

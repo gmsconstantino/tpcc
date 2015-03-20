@@ -1,4 +1,4 @@
-package com.googlecode.dummyjdbc;
+package com.gomes.myhashjdbc;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 public aspect AspectLogger {
 
-	pointcut traceMethods() : (execution(public * *(..))&& !cflow(within(AspectLogger)));
+	pointcut traceMethods() : (execution(public * *(..))&& !cflow(within(com.gomes.myhashjdbc.AspectLogger)));
 
 	before(): traceMethods() {
 		Signature signature = thisJoinPointStaticPart.getSignature();

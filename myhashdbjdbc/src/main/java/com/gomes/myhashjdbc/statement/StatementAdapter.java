@@ -1,4 +1,4 @@
-package com.googlecode.dummyjdbc.statement;
+package com.gomes.myhashjdbc.statement;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

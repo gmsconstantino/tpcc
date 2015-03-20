@@ -1,4 +1,4 @@
-package com.googlecode.dummyjdbc.statement.impl;
+package com.gomes.myhashjdbc.statement.impl;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.googlecode.dummyjdbc.DummyJdbcDriver;
+import com.gomes.myhashjdbc.Driver;
 
 public final class DatatypesTest {
 
@@ -25,11 +25,11 @@ public final class DatatypesTest {
 
 	@Before
 	public void setup() throws ClassNotFoundException, SQLException, URISyntaxException {
-		Class.forName(DummyJdbcDriver.class.getCanonicalName());
+		Class.forName(Driver.class.getCanonicalName());
 
-		DummyJdbcDriver.addTableResource("datatypes",
-				new File(CsvGenericStatementTest.class.getResource("datatypes.csv").toURI()));
-		Connection connection = DriverManager.getConnection("any");
+		Driver.addTableResource("datatypes",
+                new File(CsvGenericStatementTest.class.getResource("datatypes.csv").toURI()));
+		Connection connection = DriverManager.getConnection("jdbc:myhashdb");
 		Statement statement = connection.createStatement();
 		resultSet = statement.executeQuery("SELECT * FROM datatypes");
 

@@ -1,8 +1,7 @@
-package com.googlecode.dummyjdbc;
+package com.gomes.myhashjdbc;
 
 import java.io.File;
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
@@ -13,21 +12,21 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import com.googlecode.dummyjdbc.connection.impl.DummyConnection;
+import com.gomes.myhashjdbc.connection.impl.DummyConnection;
 
 /**
- * The {@link DummyJdbcDriver}. The {@link #connect(String, Properties)} method returns the {@link DummyConnection}.
+ * The {@link Driver}. The {@link #connect(String, Properties)} method returns the {@link DummyConnection}.
  *
  * @author Kai Winter
  */
-public final class DummyJdbcDriver implements Driver {
+public final class Driver implements java.sql.Driver {
 
 	private static Map<String, File> tableResources = Collections.synchronizedMap(new HashMap<String, File>());
 
 	static {
 		try {
 			// Register this with the DriverManager
-			DriverManager.registerDriver(new DummyJdbcDriver());
+			DriverManager.registerDriver(new Driver());
 		} catch (SQLException e) {
 			// ignore
 		}
@@ -68,6 +67,11 @@ public final class DummyJdbcDriver implements Driver {
 
 	@Override
 	public Connection connect(String url, Properties info) throws SQLException {
+
+        if (!url.startsWith("jdbc:myhashdb")) {
+            return null;
+        }
+
 		return new DummyConnection(tableResources);
 	}
 

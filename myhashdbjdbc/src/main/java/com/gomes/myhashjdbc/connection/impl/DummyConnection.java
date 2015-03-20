@@ -1,4 +1,4 @@
-package com.googlecode.dummyjdbc.connection.impl;
+package com.gomes.myhashjdbc.connection.impl;
 
 import java.io.File;
 import java.sql.PreparedStatement;
@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
 
-import com.googlecode.dummyjdbc.connection.ConnectionAdapter;
-import com.googlecode.dummyjdbc.statement.impl.CsvPreparedStatement;
-import com.googlecode.dummyjdbc.statement.impl.CsvStatement;
+import com.gomes.myhashjdbc.connection.ConnectionAdapter;
+import com.gomes.myhashjdbc.statement.impl.CsvPreparedStatement;
+import com.gomes.myhashjdbc.statement.impl.CsvStatement;
 
 /**
  * Connection which implements the methods {@link #createStatement()} and {@link #prepareStatement(String)}. The

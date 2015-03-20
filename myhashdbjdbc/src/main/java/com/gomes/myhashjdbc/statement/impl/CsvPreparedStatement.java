@@ -1,11 +1,11 @@
-package com.googlecode.dummyjdbc.statement.impl;
+package com.gomes.myhashjdbc.statement.impl;
 
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-import com.googlecode.dummyjdbc.statement.PreparedStatementAdapter;
+import com.gomes.myhashjdbc.statement.PreparedStatementAdapter;
 
 /**
  * Wraps the {@link CsvStatement} as a prepared statement.

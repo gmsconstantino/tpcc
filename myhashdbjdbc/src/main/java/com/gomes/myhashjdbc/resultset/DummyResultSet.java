@@ -1,4 +1,4 @@
-package com.googlecode.dummyjdbc.resultset;
+package com.gomes.myhashjdbc.resultset;
 
 import java.io.InputStream;
 import java.io.Reader;

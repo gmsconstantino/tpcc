@@ -1,23 +1,21 @@
-package com.googlecode.dummyjdbc;
+package com.gomes.myhashjdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.gomes.myhashjdbc.connection.impl.DummyConnection;
 import junit.framework.Assert;
 
 import org.junit.Test;
-
-import com.googlecode.dummyjdbc.DummyJdbcDriver;
-import com.googlecode.dummyjdbc.connection.impl.DummyConnection;
 
 public final class DummyJdbcDriverTest {
 
 	@Test
 	public void testGetGenericConnection() throws ClassNotFoundException, SQLException {
 
-		Class.forName(DummyJdbcDriver.class.getCanonicalName());
-		Connection connection = DriverManager.getConnection("any");
+		Class.forName(Driver.class.getCanonicalName());
+		Connection connection = DriverManager.getConnection("jdbc:myhashdb");
 
 		Assert.assertTrue(connection instanceof DummyConnection);
 	}
