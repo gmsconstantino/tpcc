@@ -21,8 +21,6 @@ import com.gomes.myhashjdbc.connection.impl.DummyConnection;
  */
 public final class Driver implements java.sql.Driver {
 
-	private static Map<String, File> tableResources = Collections.synchronizedMap(new HashMap<String, File>());
-
 	static {
 		try {
 			// Register this with the DriverManager
@@ -42,7 +40,7 @@ public final class Driver implements java.sql.Driver {
 	 *            A {@link File} object of a CSV file which should be parsed in order to return table data.
 	 */
 	public static void addTableResource(String tablename, File csvFile) {
-		tableResources.put(tablename, csvFile);
+
 	}
 
 	@Override
@@ -72,7 +70,7 @@ public final class Driver implements java.sql.Driver {
             return null;
         }
 
-		return new DummyConnection(tableResources);
+		return new DummyConnection();
 	}
 
 	@Override

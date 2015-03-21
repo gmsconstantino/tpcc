@@ -27,7 +27,7 @@ public final class CsvGenericStatementTest {
 		Connection connection = DriverManager.getConnection("jdbc:myhashdb");
 		Statement statement = connection.createStatement();
 
-		Assert.assertTrue(statement instanceof CsvStatement);
+		Assert.assertTrue(statement instanceof myStatement);
 		resultSet = statement.executeQuery("SELECT * FROM test_table");
 	}
 

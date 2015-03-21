@@ -8,17 +8,18 @@ import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 import com.gomes.myhashjdbc.resultset.DummyResultSet;
 
 /**
- * The {@link CSVResultSet} which iterates over the CSV file data.
+ * The {@link myResultSet} which iterates over the CSV file data.
  *
  * @author Kai Winter
  */
-public class CSVResultSet extends DummyResultSet {
+public class myResultSet extends DummyResultSet {
 
 	/**
 	 * The date format for parsing a date from a CSV file.
@@ -33,26 +34,26 @@ public class CSVResultSet extends DummyResultSet {
 	};
 
 	/** Column name 2 column value. */
-	private Collection<LinkedHashMap<String, String>> dummyData;
+	private Collection<HashMap<String, String>> dummyData;
 
 	/** Iterator of dummyData. */
-	private Iterator<LinkedHashMap<String, String>> resultIterator;
+	private Iterator<HashMap<String, String>> resultIterator;
 
 	/** The current value of the iterator. */
-	private LinkedHashMap<String, String> currentEntry;
+	private HashMap<String, String> currentEntry;
 
 	private final String tableName;
 
 	/**
-	 * Constructs a new {@link CSVResultSet}.
+	 * Constructs a new {@link myResultSet}.
 	 * 
 	 * @param tableName
-	 *            the name of the table this {@link CSVResultSet} stands for.
+	 *            the name of the table this {@link myResultSet} stands for.
 	 * 
 	 * @param entries
 	 *            Collection of entries from the CSV file. Each {@link LinkedHashMap} maps column name to column value.
 	 */
-	public CSVResultSet(String tableName, Collection<LinkedHashMap<String, String>> entries) {
+	public myResultSet(String tableName, Collection<HashMap<String, String>> entries) {
 		this.tableName = tableName;
 		this.dummyData = entries;
 		this.resultIterator = dummyData.iterator();
@@ -174,13 +175,13 @@ public class CSVResultSet extends DummyResultSet {
 	}
 
 	private String getValueForColumnLabel(String columnLabel, Class<?> clazz) throws SQLException {
-		if (!currentEntry.containsKey(columnLabel.toUpperCase())) {
+		if (!currentEntry.containsKey(columnLabel.toLowerCase())) {
 			String message = MessageFormat.format("Column ''{0}'' does not exist in table file ''{1}'' (type ''{2}'')",
 					columnLabel, tableName, clazz);
 			throw new SQLException(message);
 		}
 
-		return currentEntry.get(columnLabel.toUpperCase());
+		return currentEntry.get(columnLabel.toLowerCase());
 	}
 
 }

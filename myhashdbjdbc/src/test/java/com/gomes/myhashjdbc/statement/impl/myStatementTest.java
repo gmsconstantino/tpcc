@@ -10,7 +10,7 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-public final class CsvStatementTest {
+public final class myStatementTest {
 
 	/**
 	 * Tests the case if there is no csv file available for a table. In this case an empty ResultSet should be returned.
@@ -22,7 +22,7 @@ public final class CsvStatementTest {
 		Connection connection = DriverManager.getConnection("jdbc:myhashdb");
 		Statement statement = connection.createStatement();
 
-		Assert.assertTrue(statement instanceof CsvStatement);
+		Assert.assertTrue(statement instanceof myStatement);
 		ResultSet resultSet = statement.executeQuery("SELECT * FROM unknown_table");
 		boolean next = resultSet.next();
 

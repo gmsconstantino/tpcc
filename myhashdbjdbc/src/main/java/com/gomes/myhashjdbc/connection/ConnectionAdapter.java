@@ -1,5 +1,8 @@
 package com.gomes.myhashjdbc.connection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Array;
 import java.sql.Blob;
 import java.sql.CallableStatement;
@@ -25,6 +28,9 @@ import java.util.concurrent.Executor;
  * @author Kai Winter
  */
 public class ConnectionAdapter implements Connection {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionAdapter.class);
+    protected boolean autoCommit = true;
 
 	@Override
 	public <T> T unwrap(Class<T> iface) throws SQLException {
@@ -58,11 +64,13 @@ public class ConnectionAdapter implements Connection {
 
 	@Override
 	public void setAutoCommit(boolean autoCommit) throws SQLException {
+        LOGGER.debug("Set Auto Commit: "+autoCommit);
+        this.autoCommit = autoCommit;
 	}
 
 	@Override
 	public boolean getAutoCommit() throws SQLException {
-		return false;
+		return autoCommit;
 	}
 
 	@Override

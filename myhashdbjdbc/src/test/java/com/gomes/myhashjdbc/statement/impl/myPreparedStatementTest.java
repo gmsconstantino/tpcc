@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import com.gomes.myhashjdbc.Driver;
 
-public final class CsvPreparedStatementTest {
+public final class myPreparedStatementTest {
 
 	private ResultSet resultSet;
 
@@ -28,7 +28,7 @@ public final class CsvPreparedStatementTest {
 		Connection connection = DriverManager.getConnection("jdbc:myhashdb");
 		PreparedStatement statement = connection.prepareStatement("SELECT * FROM test_table");
 
-		Assert.assertTrue(statement instanceof CsvPreparedStatement);
+		Assert.assertTrue(statement instanceof myPreparedStatement);
 		resultSet = statement.executeQuery();
 	}
 

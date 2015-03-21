@@ -8,24 +8,23 @@ import java.util.Map;
 import com.gomes.myhashjdbc.statement.PreparedStatementAdapter;
 
 /**
- * Wraps the {@link CsvStatement} as a prepared statement.
+ * Wraps the {@link myStatement} as a prepared statement.
  *
  * @author Kai Winter
  */
-public class CsvPreparedStatement extends PreparedStatementAdapter {
+public class myPreparedStatement extends PreparedStatementAdapter {
 
-	private final CsvStatement statement;
+	private final myStatement statement;
 	private final String sql;
 
 	/**
-	 * Constructs a new {@link CsvPreparedStatement}.
+	 * Constructs a new {@link myPreparedStatement}.
 	 *
-	 * @param tableResources {@link Map} of table name to CSV file.
 	 * @param sql
 	 *            the SQL statement.
 	 */
-	public CsvPreparedStatement(Map<String, File> tableResources, String sql) {
-		this.statement = new CsvStatement(tableResources);
+	public myPreparedStatement(String sql) {
+		this.statement = new myStatement();
 		this.sql = sql;
 	}
 

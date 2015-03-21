@@ -4,11 +4,15 @@ import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.Map;
 
+import com.yahoo.ycsb.*;
+
 import com.gomes.myhashjdbc.connection.ConnectionAdapter;
-import com.gomes.myhashjdbc.statement.impl.CsvPreparedStatement;
-import com.gomes.myhashjdbc.statement.impl.CsvStatement;
+import com.gomes.myhashjdbc.statement.impl.myPreparedStatement;
+import com.gomes.myhashjdbc.statement.impl.myStatement;
+import database.Database;
 
 /**
  * Connection which implements the methods {@link #createStatement()} and {@link #prepareStatement(String)}. The
@@ -20,23 +24,22 @@ import com.gomes.myhashjdbc.statement.impl.CsvStatement;
  */
 public class DummyConnection extends ConnectionAdapter {
 
-	private Map<String, File> tableResources;
+    private Database<String, HashMap<String, ByteIterator>> db;
 
 	/**
 	 * Constructs a new {@link DummyConnection}.
-	 * @param tableResources {@link Map} of table name to CSV file.
 	 */
-	public DummyConnection(Map<String, File> tableResources) {
-		this.tableResources = tableResources;
+	public DummyConnection() {
+
 	}
 
 	@Override
 	public Statement createStatement() throws SQLException {
-		return new CsvStatement(tableResources);
+		return new myStatement();
 	}
 
 	@Override
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
-		return new CsvPreparedStatement(tableResources, sql);
+		return new myPreparedStatement(sql);
 	};
 }
